@@ -98,7 +98,7 @@ Supports:
 
 ## About Page
 
-![About](docs/about-dark.png)
+![About](docs/about.png)
 
 ---
 
