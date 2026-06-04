@@ -1,15 +1,21 @@
 # AI Interview Analytics System
 
-> AI-powered HR analytics platform for intelligent candidate evaluation, hiring insights, and conversational analytics.
+> AI-powered HR analytics platform delivering intelligent candidate evaluation, real-time hiring insights, automated scoring, and conversational analytics.
 
 <p align="center">
+
+![Stars](https://img.shields.io/github/stars/anmol396/ai-interview-analytics-system?style=for-the-badge)
+![Forks](https://img.shields.io/github/forks/anmol396/ai-interview-analytics-system?style=for-the-badge)
+![Issues](https://img.shields.io/github/issues/anmol396/ai-interview-analytics-system?style=for-the-badge)
+
+<br>
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi\&logoColor=white)
 ![React](https://img.shields.io/badge/React-61DAFB?logo=react\&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite\&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql\&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python\&logoColor=white)
-![MIT License](https://img.shields.io/badge/License-MIT-yellow)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 </p>
 
@@ -17,68 +23,31 @@
 
 # Project Overview
 
-AI Interview Analytics System is a full-stack intelligent recruitment platform built to help HR teams streamline candidate evaluation and decision-making.
+AI Interview Analytics System is a production-ready full-stack recruitment intelligence platform designed to modernize candidate evaluation and hiring decisions.
 
-The platform combines structured analytics with AI-assisted interaction by routing requests between databases and Large Language Models (LLMs) to deliver fast, contextual, and actionable hiring insights.
+The system combines structured analytics with conversational AI by routing requests intelligently between databases and Large Language Models (LLMs) to deliver actionable recruitment insights.
 
 ### Objectives
 
-* Simplify candidate management
-* Generate intelligent hiring insights
-* Enable conversational data analysis
-* Improve recruitment efficiency
-* Support scalable analytics workflows
+* Improve recruitment workflows
+* Enable intelligent hiring decisions
+* Deliver conversational analytics
+* Automate candidate evaluation
+* Support scalable analytics operations
 
 ---
 
 # Features
 
-### HR Analytics Dashboard
-
-* Candidate statistics
-* Hiring performance tracking
-* Recruitment insights
-
-### Candidate Management
-
-* Add candidates
-* Edit candidate records
-* Delete entries
-* Track evaluation progress
-
-### AI Hiring Assistant
-
-* Natural language interaction
-* Candidate analysis
-* Smart recommendation generation
-
-### Automated Candidate Scoring
-
-Calculates final evaluation score using:
-
-* Written Round
-* Technical Round
-* PM Round
-* HR Round
-
-### Authentication & Security
-
-* JWT Authentication
-* Protected APIs
-* Secure session handling
-
-### Multi-LLM Routing
-
-Supports:
-
-* Google Gemini
-* Groq
-* Fallback handling
-
-### Monitoring
-
-* Health checks
-* Database reconnection
+| Module                    | Description                                                                  |
+| ------------------------- | ---------------------------------------------------------------------------- |
+| HR Analytics Dashboard    | View candidate statistics, hiring trends, rankings, and recruitment insights |
+| Candidate Evaluation      | Candidate assessment lifecycle and intelligent evaluation workflows          |
+| AI Hiring Assistant       | Conversational interface for hiring insights and recommendations             |
+| Automated Scoring         | Aggregate Written, Technical, PM, and HR assessment scores                   |
+| Authentication & Security | JWT authentication with protected routes                                     |
+| Multi-LLM Routing         | Dynamic routing across Gemini, Groq, and fallback providers                  |
+| System Monitoring         | Database health checks and recovery endpoints                                |
 
 ---
 
@@ -104,27 +73,39 @@ Supports:
 
 ## Login & Signup
 
-| Login                    | Signup                    |
-| ------------------------ | ------------------------- |
+| Login               | Signup               |
+| ------------------- | -------------------- |
 | ![](docs/login.png) | ![](docs/signup.png) |
 
 ---
 
 # System Architecture
 
-The application follows a layered architecture where requests move through processing services before reaching databases or AI providers.
+The platform follows a layered architecture where frontend interactions are processed through backend services and routed toward structured retrieval or AI generation.
 
 ![System Architecture](docs/system_architecture.png)
+
+Architecture Flow:
+
+```text
+React Frontend
+↓
+FastAPI Backend
+↓
+Authentication + Processing
+↓
+Database / AI Layer
+↓
+Response Generation
+```
 
 ---
 
 # Data Pipeline
 
-The assistant processes requests using intent classification and dynamic routing.
+The assistant processes requests through validation, classification, intelligent routing, and response generation.
 
 ![Data Pipeline](docs/data_pipeline.png)
-
-Flow:
 
 ```text
 User Input
@@ -132,6 +113,7 @@ User Input
 → Intent Classification
 → SQL / AI Routing
 → Response Generation
+→ JSON Response
 → UI Rendering
 ```
 
@@ -139,14 +121,15 @@ User Input
 
 # Tech Stack
 
-| Layer          | Technologies                  |
-| -------------- | ----------------------------- |
-| Frontend       | React, Vite, Tailwind CSS     |
-| Backend        | FastAPI, SQLAlchemy, Pydantic |
-| Database       | MySQL                         |
-| Authentication | JWT                           |
-| AI             | Google Gemini, Groq           |
-| Visualization  | Recharts                      |
+| Category       | Technologies                             |
+| -------------- | ---------------------------------------- |
+| Frontend       | React • Vite • Tailwind CSS • Axios      |
+| Backend        | FastAPI • SQLAlchemy • Pydantic • Python |
+| Database       | MySQL                                    |
+| Authentication | JWT • Passlib                            |
+| AI & LLM       | Google Gemini API • Groq API             |
+| Visualization  | Recharts                                 |
+| Environment    | python-dotenv                            |
 
 ---
 
@@ -154,38 +137,46 @@ User Input
 
 ```text
 ai-interview-analytics-system/
-│
-├── backend/
-│   ├── routes/
-│   ├── schemas/
-│   ├── services/
-│   ├── tests/
-│   ├── database.py
-│   ├── models.py
-│   └── main.py
-│
-├── frontend/
-│   ├── src/
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── vite.config.js
-│
-├── docs/
-│   ├── dashboard-dark.png
-│   ├── ai-assistant-dark.png
-│   ├── about-dark.png
-│   ├── architecture-dark.png
-│   └── pipeline-dark.png
-│
-├── .env.example
-├── requirements.txt
-├── README.md
-└── run.py
+
+backend/
+├── routes/
+├── schemas/
+├── services/
+├── tests/
+├── database.py
+├── models.py
+└── main.py
+
+frontend/
+├── src/
+├── package.json
+├── tailwind.config.js
+└── vite.config.js
+
+docs/
+├── dashboard.png
+├── ai-assistant.png
+├── about.png
+├── system_architecture.png
+└── data_pipeline.png
+
+.env.example
+requirements.txt
+README.md
+run.py
 ```
 
 ---
 
 # Setup
+
+## Prerequisites
+
+* Python 3.11+
+* Node.js 18+
+* MySQL 8+
+* Google API Key
+* Groq API Key
 
 ## Clone Repository
 
@@ -198,8 +189,6 @@ cd ai-interview-analytics-system
 ---
 
 ## Environment Setup
-
-Create environment file:
 
 ```bash
 cp .env.example .env
@@ -232,13 +221,13 @@ python run.py
 
 Backend:
 
-```text
+```
 http://localhost:8000
 ```
 
 Swagger:
 
-```text
+```
 http://localhost:8000/docs
 ```
 
@@ -256,7 +245,7 @@ npm run dev
 
 Frontend:
 
-```text
+```
 http://localhost:5173
 ```
 
@@ -264,48 +253,17 @@ http://localhost:5173
 
 # API Overview
 
-## Authentication
-
-POST `/auth/signup`
-POST `/auth/token`
-
----
-
-## Candidates
-
-GET `/candidates`
-
-POST `/candidates`
-
-PUT `/candidates/{id}`
-
-DELETE `/candidates/{id}`
-
----
-
-## Dashboard
-
-GET `/dashboard-stats`
-
----
-
-## AI Assistant
-
-POST `/chat`
-
----
-
-## Health
-
-GET `/health`
-
-POST `/reconnect-db`
+| Module         | Endpoint                      |
+| -------------- | ----------------------------- |
+| Authentication | `/auth/signup`, `/auth/token` |
+| Candidates     | `/candidates`                 |
+| Dashboard      | `/dashboard-stats`            |
+| AI Assistant   | `/chat`                       |
+| Health         | `/health`, `/reconnect-db`    |
 
 ---
 
 # Testing
-
-Run verification scripts:
 
 ```bash
 python backend/tests/verify_gemini_migration.py
@@ -319,16 +277,45 @@ python backend/tests/ai_self_test.py
 
 # Future Scope
 
-* Resume parsing
+* Resume parsing and evaluation
 * Role-based access control
 * Email notifications
-* Advanced analytics
+* Advanced analytics dashboards
 * Docker deployment
-* Cloud hosting
+* Cloud hosting support
 
 ---
 
+# Contributors
+
+This project was developed collaboratively with shared ownership across frontend, backend, API integration, testing, and system design.
+
+| Contributor        | Responsibilities                                                                                                                                | GitHub                        | LinkedIn                                            |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | --------------------------------------------------- |
+| **Anmol Chawla**   | Frontend Development • UI/UX Design • React + Vite • Dashboard • Login/Signup • AI Assistant • Theme System • Responsive Design • Documentation | https://github.com/anmol396   | https://www.linkedin.com/in/anmol-chawla-b079672b6/ |
+| **Drashti Rajgor** | Backend Development • FastAPI APIs • Database Integration • Authentication • AI Services • Backend Testing • System Integration                 | https://github.com/DrashtiRaj | https://www.linkedin.com/in/drashti-r-3437a73b3/    |
+
+### Shared Contributions
+
+* API Integration (Frontend ↔ Backend)
+* Testing & Debugging
+* System Architecture
+* Data Flow Design
+* Feature Validation
+* Project Collaboration
+
+---
+
+# Support
+
+If you found this project useful:
+
+⭐ Star the repository
+🍴 Fork the repository
+🐞 Open issues and suggestions
+
+---
 
 # License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License ![LICENSE].
