@@ -1,0 +1,14 @@
+fastapi                    # FastAPI framework for backend APIs
+uvicorn                    # Server to run FastAPI application
+sqlalchemy                 # ORM for database operations
+pymysql                    # MySQL database connector
+pydantic                   # Data validation and schema management
+python-dotenv              # Load environment variables from .env file
+python-jose[cryptography]  # JWT authentication and token handling
+passlib[bcrypt]            # Password hashing utilities
+google-genai               # Google Gemini API integration
+groq                       # Groq LLM API integration
+openai                     # OpenAI API integration
+python-multipart           # File upload and form data handling
+email-validator            # Email validation support
+bcrypt                     # Password encryption support

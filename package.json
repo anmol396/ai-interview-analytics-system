@@ -1,0 +1,12 @@
+{
+  "name": "ai-interview-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev:frontend & python run.py",
+    "dev:frontend": "cd frontend && npm install && npm run dev"
+  },
+  "devDependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
