@@ -182,11 +182,11 @@ python backend/tests/ai_self_test.py
 
 ## Future Enhancements
 
-- [ ] Resume (PDF) upload and parsing
-- [ ] Role-based access control (Admin / HR / Viewer)
-- [ ] Email notifications for status changes
-- [ ] Advanced trend graphs
-- [ ] Docker + Docker Compose support
+-  Resume (PDF) upload and parsing
+-  Role-based access control (Admin / HR / Viewer)
+-  Email notifications for status changes
+-  Advanced trend graphs
+-  Docker + Docker Compose support
 
 
 
