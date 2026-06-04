@@ -318,4 +318,4 @@ If you found this project useful:
 
 # License
 
-This project is licensed under the MIT License ![LICENSE].
+This project is licensed under the MIT License ![](LICENSE).
