@@ -1,208 +1,334 @@
-# HR Analytics Platform
+# AI Interview Analytics System
 
-> A production-ready system delivering intelligent candidate insights, automated scoring, and a real-time interactive assistant for hiring teams.
+> AI-powered HR analytics platform for intelligent candidate evaluation, hiring insights, and conversational analytics.
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)](https://www.mysql.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+<p align="center">
+
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi\&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react\&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite\&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql\&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python\&logoColor=white)
+![MIT License](https://img.shields.io/badge/License-MIT-yellow)
+
+</p>
 
 ---
 
-## Project Overview
+# Project Overview
 
-This platform empowers recruitment processes with data-driven workflows, ensuring HR teams can manage candidates efficiently while gaining deep insights through natural language interactions. It bridges the gap between structured database records and generative language models.
+AI Interview Analytics System is a full-stack intelligent recruitment platform built to help HR teams streamline candidate evaluation and decision-making.
 
+The platform combines structured analytics with AI-assisted interaction by routing requests between databases and Large Language Models (LLMs) to deliver fast, contextual, and actionable hiring insights.
 
-## Features
+### Objectives
 
-- **Dashboard Overview** — Live statistics: total candidates, pass/fail rates, and today's activity
-- **Candidate Management** — Full CRUD operations for HR records
-- **Analyst Assistant** — Chat-based interface for data-driven hiring insights and recommendations
-- **Automated Scoring** — Calculates total candidate scores from multi-stage assessments (Written, Technical, PM, HR)
-- **JWT Authentication** — Secure login and signup with token-based session management
-- **Multi-LLM Routing** — Intelligently routes queries between primary and fallback providers
-- **Health Monitoring** — Live database connectivity check and reconnection endpoint
+* Simplify candidate management
+* Generate intelligent hiring insights
+* Enable conversational data analysis
+* Improve recruitment efficiency
+* Support scalable analytics workflows
 
-## Architecture
+---
 
-The platform relies on a multi-layered design. The React frontend communicates with a Python backend, which handles authentication, processing logic, and routing queries either to the database or external language models.
+# Features
 
-## Data Pipeline
+### HR Analytics Dashboard
 
-When a user submits a query through the assistant, the request is validated, classified by intent, and branched. Structured intents are translated into SQL for exact data retrieval, while unstructured queries fall back to generative models. Both paths merge to return a formatted JSON payload rendered in the UI.
+* Candidate statistics
+* Hiring performance tracking
+* Recruitment insights
 
-## Tech Stack
+### Candidate Management
 
-| Layer       | Technology                                      |
-|-------------|------------------------------------------------|
-| Backend     | FastAPI, SQLAlchemy, Pydantic, python-dotenv    |
-| Frontend    | React (Vite), Axios, Tailwind CSS, Recharts     |
-| Database    | MySQL                                           |
-| LLM         | Google Gemini API, Groq API                     |
-| Auth        | JWT (`python-jose`), Passlib (`bcrypt`)         |
+* Add candidates
+* Edit candidate records
+* Delete entries
+* Track evaluation progress
 
-## Project Structure
+### AI Hiring Assistant
 
+* Natural language interaction
+* Candidate analysis
+* Smart recommendation generation
+
+### Automated Candidate Scoring
+
+Calculates final evaluation score using:
+
+* Written Round
+* Technical Round
+* PM Round
+* HR Round
+
+### Authentication & Security
+
+* JWT Authentication
+* Protected APIs
+* Secure session handling
+
+### Multi-LLM Routing
+
+Supports:
+
+* Google Gemini
+* Groq
+* Fallback handling
+
+### Monitoring
+
+* Health checks
+* Database reconnection
+
+---
+
+# Screenshots
+
+## Dashboard
+
+![Dashboard](docs/dashboard-dark.png)
+
+---
+
+## AI Assistant
+
+![AI Assistant](docs/ai-assistant-dark.png)
+
+---
+
+## About Page
+
+![About](docs/about-dark.png)
+
+---
+
+## Login & Signup
+
+| Login                    | Signup                    |
+| ------------------------ | ------------------------- |
+| ![](docs/login-dark.png) | ![](docs/signup-dark.png) |
+
+---
+
+# System Architecture
+
+The application follows a layered architecture where requests move through processing services before reaching databases or AI providers.
+
+![System Architecture](docs/architecture-dark.png)
+
+---
+
+# Data Pipeline
+
+The assistant processes requests using intent classification and dynamic routing.
+
+![Data Pipeline](docs/pipeline-dark.png)
+
+Flow:
+
+```text
+User Input
+→ Validation
+→ Intent Classification
+→ SQL / AI Routing
+→ Response Generation
+→ UI Rendering
 ```
-ai-interview-system/
+
+---
+
+# Tech Stack
+
+| Layer          | Technologies                  |
+| -------------- | ----------------------------- |
+| Frontend       | React, Vite, Tailwind CSS     |
+| Backend        | FastAPI, SQLAlchemy, Pydantic |
+| Database       | MySQL                         |
+| Authentication | JWT                           |
+| AI             | Google Gemini, Groq           |
+| Visualization  | Recharts                      |
+
+---
+
+# Project Structure
+
+```text
+ai-interview-analytics-system/
+│
 ├── backend/
-│   ├── routes/          # API endpoints
-│   ├── schemas/         # Pydantic request/response models
-│   ├── services/        # Processing logic & LLM integrations
-│   ├── tests/           # Verification scripts
-│   ├── database.py      # Connection & retry logic
-│   ├── main.py          # Application entry point
-│   └── models.py        # SQLAlchemy ORM models
+│   ├── routes/
+│   ├── schemas/
+│   ├── services/
+│   ├── tests/
+│   ├── database.py
+│   ├── models.py
+│   └── main.py
+│
 ├── frontend/
-│   ├── src/             # React application source code
-│   ├── index.html       # Vite entry point
-│   ├── package.json     # Node dependencies
+│   ├── src/
+│   ├── package.json
 │   ├── tailwind.config.js
 │   └── vite.config.js
-├── .env.example         # Environment variable template
-├── requirements.txt     # Python dependencies
-└── run.py               # Backend launcher
+│
+├── docs/
+│   ├── dashboard-dark.png
+│   ├── ai-assistant-dark.png
+│   ├── about-dark.png
+│   ├── architecture-dark.png
+│   └── pipeline-dark.png
+│
+├── .env.example
+├── requirements.txt
+├── README.md
+└── run.py
 ```
 
-## Quick Start
+---
 
-### Prerequisites
+# Setup
 
-- Python 3.11+
-- Node.js 18+
-- MySQL 8.0+ (local or hosted)
-- A Google API key ([get one here](https://ai.google.dev/))
-- A Groq API key ([get one here](https://console.groq.com/))
-
-### 1. Clone the Repository
+## Clone Repository
 
 ```bash
-git clone https://github.com/your-username/ai-interview-system.git
-cd ai-interview-system
+git clone https://github.com/anmol396/ai-interview-analytics-system.git
+
+cd ai-interview-analytics-system
 ```
+
+---
 
 ## Environment Setup
 
-Copy the template and fill in your credentials:
+Create environment file:
 
 ```bash
 cp .env.example .env
 ```
 
-Ensure your `.env` contains valid configuration (no secrets are stored in `.env.example`):
+Example:
 
-| Variable              | Description                                      |
-|-----------------------|--------------------------------------------------|
-| `DATABASE_URL`        | Connection string (SQLAlchemy format)            |
-| `VITE_API_BASE_URL`   | Backend base URL (used by the frontend)          |
-| `API_BASE_URL`        | Backend base URL (used by the backend)           |
-| `GOOGLE_API_KEY`      | Primary LLM API key                              |
-| `GROQ_API_KEY`        | Fallback LLM API key                             |
-| `SECRET_KEY`          | Secret key for JWT token signing                 |
+```env
+DATABASE_URL=
+API_BASE_URL=
+VITE_API_BASE_URL=
+GOOGLE_API_KEY=
+GROQ_API_KEY=
+SECRET_KEY=
+```
+
+---
 
 ## Backend Setup
 
 ```bash
-# Create and activate virtual environment
 python -m venv venv
-venv\Scripts\activate        # Windows
-# source venv/bin/activate   # macOS/Linux
 
-# Install dependencies
+venv\Scripts\activate
+
 pip install -r requirements.txt
-```
 
-### Start Backend Server
-
-```bash
-# From the project root
 python run.py
 ```
 
-- **Backend URL:** http://localhost:8000
-- **Swagger Docs:** http://localhost:8000/docs
+Backend:
+
+```text
+http://localhost:8000
+```
+
+Swagger:
+
+```text
+http://localhost:8000/docs
+```
+
+---
 
 ## Frontend Setup
 
 ```bash
 cd frontend
+
 npm install
+
 npm run dev
 ```
 
-- **Frontend URL:** http://localhost:5173
+Frontend:
 
-## API Endpoints
+```text
+http://localhost:5173
+```
 
-### Authentication
-| Method | Endpoint             | Description                              |
-|--------|----------------------|------------------------------------------|
-| `POST` | `/auth/signup`       | Register a new user account              |
-| `POST` | `/auth/token`        | Login and receive a JWT access token     |
+---
 
-### Candidates
-| Method | Endpoint             | Description                              |
-|--------|----------------------|------------------------------------------|
-| `GET`  | `/candidates/`       | List all records                         |
-| `POST` | `/candidates/`       | Add a new evaluation                     |
-| `PUT`  | `/candidates/{id}`   | Update an existing record                |
-| `DELETE` | `/candidates/{id}` | Delete a record                          |
+# API Overview
 
-### Analytics
-| Method | Endpoint             | Description                              |
-|--------|----------------------|------------------------------------------|
-| `GET`  | `/dashboard-stats`   | Retrieve dashboard statistics            |
+## Authentication
 
-### AI Assistant
-| Method | Endpoint             | Description                              |
-|--------|----------------------|------------------------------------------|
-| `POST` | `/chat`              | Chat with the Analyst                    |
+POST `/auth/signup`
+POST `/auth/token`
 
-### Health
-| Method | Endpoint             | Description                              |
-|--------|----------------------|------------------------------------------|
-| `GET`  | `/health`            | Check database and API status            |
-| `POST` | `/reconnect-db`      | Trigger a MySQL reconnection attempt     |
+---
 
-## Testing
+## Candidates
 
-Verification scripts are available in `backend/tests/`:
+GET `/candidates`
+
+POST `/candidates`
+
+PUT `/candidates/{id}`
+
+DELETE `/candidates/{id}`
+
+---
+
+## Dashboard
+
+GET `/dashboard-stats`
+
+---
+
+## AI Assistant
+
+POST `/chat`
+
+---
+
+## Health
+
+GET `/health`
+
+POST `/reconnect-db`
+
+---
+
+# Testing
+
+Run verification scripts:
 
 ```bash
-# Verify SDK migration
 python backend/tests/verify_gemini_migration.py
 
-# Verify Groq connectivity
 python backend/tests/groq_verification.py
 
-# Run full pipeline self-test
 python backend/tests/ai_self_test.py
 ```
 
-## Future Enhancements
+---
 
--  Resume (PDF) upload and parsing
--  Role-based access control (Admin / HR / Viewer)
--  Email notifications for status changes
--  Advanced trend graphs
--  Docker + Docker Compose support
+# Future Scope
+
+* Resume parsing
+* Role-based access control
+* Email notifications
+* Advanced analytics
+* Docker deployment
+* Cloud hosting
+
+---
 
 
+# License
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-## UI Screenshots
-
-- **Login Page**  
-  ![Login](docs/login.png)
-- **Signup Page**  
-  ![Signup](docs/signup.png)
-- **Dashboard Overview**  
-  ![Dashboard](docs/dashboard.png)
-- **AI Assistant Interface**  
-  ![AI Assistant](docs/ai-assistant.png)
-- **About Page (Data Pipeline)**  
-  ![About](docs/about.png)
+Licensed under MIT License.
