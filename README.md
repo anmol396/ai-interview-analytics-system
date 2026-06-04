@@ -86,13 +86,13 @@ Supports:
 
 ## Dashboard
 
-![Dashboard](docs/dashboard-dark.png)
+![Dashboard](docs/dashboard.png)
 
 ---
 
 ## AI Assistant
 
-![AI Assistant](docs/ai-assistant-dark.png)
+![AI Assistant](docs/ai-assistant.png)
 
 ---
 
@@ -106,7 +106,7 @@ Supports:
 
 | Login                    | Signup                    |
 | ------------------------ | ------------------------- |
-| ![](docs/login-dark.png) | ![](docs/signup-dark.png) |
+| ![](docs/login.png) | ![](docs/signup.png) |
 
 ---
 
@@ -114,7 +114,7 @@ Supports:
 
 The application follows a layered architecture where requests move through processing services before reaching databases or AI providers.
 
-![System Architecture](docs/architecture-dark.png)
+![System Architecture](docs/architecture.png)
 
 ---
 
@@ -122,7 +122,7 @@ The application follows a layered architecture where requests move through proce
 
 The assistant processes requests using intent classification and dynamic routing.
 
-![Data Pipeline](docs/pipeline-dark.png)
+![Data Pipeline](docs/pipeline.png)
 
 Flow:
 
