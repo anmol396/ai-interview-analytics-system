@@ -315,7 +315,7 @@ If you found this project useful:
 🐞 Open issues and suggestions
 
 ---
-
 # License
 
-This project is licensed under the MIT License !(LICENSE).
+This project is distributed under the [MIT License](LICENSE).  
+See the `LICENSE` file for more information.
