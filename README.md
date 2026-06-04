@@ -331,4 +331,4 @@ python backend/tests/ai_self_test.py
 
 # License
 
-Licensed under MIT License.
+This project is licensed under the [MIT License](LICENSE).
