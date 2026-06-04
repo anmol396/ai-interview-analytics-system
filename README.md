@@ -194,16 +194,47 @@ cd ai-interview-analytics-system
 cp .env.example .env
 ```
 
-Example:
+## Environment Setup
+
+Create environment file:
+
+```bash
+cp .env.example .env
+```
+
+Configure your environment variables:
 
 ```env
+# Database (MySQL)
 DATABASE_URL=mysql+pymysql://username:password@localhost:3306/database_name
+
+# Frontend / Backend
 VITE_API_BASE_URL=http://localhost:8000
 API_BASE_URL=http://localhost:8000
+
+# Google Gemini API Key
+# Get Key → https://aistudio.google.com/app/apikey
 GOOGLE_API_KEY=your_google_api_key
+
+# Groq API Key
+# Get Key → https://console.groq.com/keys
 GROQ_API_KEY=your_groq_api_key
+
+# JWT Secret
+# Generate → https://generate-secret.vercel.app/32
 SECRET_KEY=your_secret_key
 ```
+
+### Create API Keys
+
+| Service          | Purpose    | Get Key                                |
+| ---------------- | ---------- | -------------------------------------- |
+| Google AI Studio | Gemini API | https://aistudio.google.com/app/apikey |
+| Groq Cloud       | Groq API   | https://console.groq.com/keys          |
+| Secret Generator | JWT Secret | https://generate-secret.vercel.app/32  |
+
+> Never commit `.env` to GitHub. Only commit `.env.example`.
+
 
 ---
 
