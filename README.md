@@ -310,9 +310,9 @@ This project was developed collaboratively with shared ownership across frontend
 
 If you found this project useful:
 
-⭐ Star the repository
-🍴 Fork the repository
-🐞 Open issues and suggestions
+* ⭐ Star the repository
+*  Fork the repository
+*  Open issues and suggestions
 
 ---
 # License
