@@ -197,12 +197,12 @@ cp .env.example .env
 Example:
 
 ```env
-DATABASE_URL=
-API_BASE_URL=
-VITE_API_BASE_URL=
-GOOGLE_API_KEY=
-GROQ_API_KEY=
-SECRET_KEY=
+DATABASE_URL=mysql+pymysql://username:password@localhost:3306/database_name
+VITE_API_BASE_URL=http://localhost:8000
+API_BASE_URL=http://localhost:8000
+GOOGLE_API_KEY=your_google_api_key
+GROQ_API_KEY=your_groq_api_key
+SECRET_KEY=your_secret_key
 ```
 
 ---
