@@ -114,7 +114,7 @@ Supports:
 
 The application follows a layered architecture where requests move through processing services before reaching databases or AI providers.
 
-![System Architecture](docs/architecture.png)
+![System Architecture](docs/system_architecture.png)
 
 ---
 
@@ -122,7 +122,7 @@ The application follows a layered architecture where requests move through proce
 
 The assistant processes requests using intent classification and dynamic routing.
 
-![Data Pipeline](docs/pipeline.png)
+![Data Pipeline](docs/data_pipeline.png)
 
 Flow:
 
