@@ -319,3 +319,4 @@ If you found this project useful:
 
 This project is distributed under the [MIT License](LICENSE).  
 See the `LICENSE` file for more information.
+© 2026 Anmol Chawla & Drashti Rajgor
