@@ -87,7 +87,8 @@ def handle_query_with_sql(query: str, db: Session) -> dict:
         result["response"] = resp
         return result
 
-    if intent == "ANALYTICS":
+    # Handle both general analytics and role-specific analytics
+    if intent in ("ANALYTICS", "ROLE_ANALYTICS"):
         rows = db.execute(text("SELECT role, COUNT(*) as count FROM hr_candidates GROUP BY role ORDER BY count DESC")).fetchall()
         result.update({"title": "Role Distribution Analytics", "type": "analytics", "data": [dict(r._mapping) for r in rows]})
         if rows:
