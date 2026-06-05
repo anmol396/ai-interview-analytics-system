@@ -245,7 +245,8 @@ def _extract_name_from_query(query: str, trigger: str) -> str:
     Returns:
         Extracted name string
     """
-    name_str = query.replace(trigger, "").strip()
+    parts = re.split(rf'{re.escape(trigger)}', query, maxsplit=1)
+    name_str = parts[-1].strip() if len(parts) > 1 else query.replace(trigger, '').strip()
     if trigger in ["role", "details", "tell me", "profile"]:
         name_str = re.sub(r'^(?:of|about)\s+', '', name_str).strip()
     return name_str
@@ -474,7 +475,7 @@ def classify_query(query: str) -> Dict[str, Any]:
                     "limit": limit
                 }, 0.87)
     
-    if (("compare" in q or " vs " in q or " versus " in q or " and " in q or " or " in q) and 
+    if (("compare" in q or " vs " in q or " versus " in q or " and " in q or " or " in q or " & " in q) and 
         not is_multi_filter and not is_between):
         # Try two-candidate comparison patterns
         name_part = q.replace("compare", "").strip()
@@ -484,6 +485,10 @@ def classify_query(query: str) -> Dict[str, Any]:
             # Filter out role names from the and split
             parts = [n.strip() for n in name_part.split(" and ")]
             # Only treat as comparison if they look like names (not just keywords)
+            if len(parts) == 2 and not any(keyword in p for p in parts for keyword in ["role", "engineer", "manager", "analyst", "developer"]):
+                names = parts
+        elif " & " in name_part or "&" in name_part:
+            parts = [n.strip() for n in re.split(r'\s*&\s*', name_part) if n.strip()]
             if len(parts) == 2 and not any(keyword in p for p in parts for keyword in ["role", "engineer", "manager", "analyst", "developer"]):
                 names = parts
         elif " or " in name_part:
