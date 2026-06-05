@@ -63,6 +63,7 @@ BEST_WORST_KEYWORDS = [
     "who scored highest", "who scored lowest", "scored the highest"
 ]
 ANALYTICS_KEYWORDS = ["distribution", "by role", "role count", "role wise", "each role", "role-wise", "analytics", "dashboard", "statistics", "stats", "report"]
+CONCEPTUAL_KEYWORDS = ["difference", "explain", "define", "why"]
 GENERAL_KEYWORDS = ["what", "who", "explain", "difference", "define", "why", "how"]
 HR_KEYWORDS = ["candidate", "score", "interview", "hiring", "talent", "employee"]
 
@@ -361,6 +362,13 @@ def classify_query(query: str) -> Dict[str, Any]:
     # ─────────────────────────────────────────────────────────────────────────
     if _has_any_keyword(q, RECOMMENDATION_KEYWORDS):
         return _add_confidence({"intent": "RECOMMENDATION"}, 0.90)
+
+    # ─────────────────────────────────────────────────────────────────────────
+    # GENERAL CONCEPTUAL QUESTIONS
+    # e.g. "difference between technical and hr round"
+    # ─────────────────────────────────────────────────────────────────────────
+    if _has_any_keyword(q, CONCEPTUAL_KEYWORDS):
+        return _add_confidence({"intent": "GENERAL"}, 0.90)
 
     # ─────────────────────────────────────────────────────────────────────────
     # SINGLE_METRIC (e.g., "technical score of John" or "hr evaluation of Alice")
