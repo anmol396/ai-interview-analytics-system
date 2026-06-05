@@ -122,8 +122,18 @@ def classify_query(query: str) -> dict:
         top_match = re.search(r'compare\s+top\s+(\d+)\s+(.+)', q)
         if top_match:
             limit = int(top_match.group(1))
-            role_str = top_match.group(2).strip().replace("from that", "").replace("from them", "").strip()
+            role_str = top_match.group(2).strip()
+            # Drop trailing conversational text after the role phrase
+            role_str = re.sub(r'[?!.].*$', '', role_str).strip()
+            role_str = re.split(r'\b(?:from|with|and|then|please|kindly|now|also|now)\b', role_str, 1)[0].strip()
+            role_str = role_str.replace("from that", "").replace("from them", "").strip()
             if role_str:
+                # Extract the known role from longer text if needed
+                for r_key in sorted(list(ROLE_MAP.keys()) + [r.lower() for r in KNOWN_ROLES], key=len, reverse=True):
+                    if re.search(rf'\b{re.escape(r_key)}\b', role_str):
+                        role_norm, _, _ = get_closest_role(r_key)
+                        if role_norm:
+                            return {"intent": "COMPARE_TOP", "role": role_norm, "limit": limit}
                 role_norm, _, _ = get_closest_role(role_str)
                 if role_norm:
                     return {"intent": "COMPARE_TOP", "role": role_norm, "limit": limit}

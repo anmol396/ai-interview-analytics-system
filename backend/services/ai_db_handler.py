@@ -54,6 +54,24 @@ def handle_query_with_sql(query: str, db: Session) -> dict:
             result["response"] = f"### {result['title']}\n\n" + format_markdown_table(rows)
         return result
 
+    if intent == "COMPARE_TOP":
+        role, limit = params.get("role"), params.get("limit", 2)
+        rows = db.execute(text(
+            "SELECT name, role, status, written_test, technical_assessment, pm_assessment, hr_evaluation, total_score "
+            "FROM hr_candidates WHERE LOWER(role) LIKE :r ORDER BY total_score DESC LIMIT :lim"
+        ), {"r": f"%{role.lower()}%", "lim": limit}).fetchall()
+        if len(rows) < 2:
+            result["response"] = f"Not enough {role}s found to compare top {limit}."
+            return result
+        names = [r[0] for r in rows]
+        result["title"] = f"Top {limit} {role}s Comparison"
+        resp = f"### {result['title']}:\n| Metric | {' | '.join(names)} |\n| --- | {' | '.join(['---'] * len(names))} |\n"
+        metrics = [("Role", 1), ("Status", 2), ("Written", 3), ("Technical", 4), ("PM", 5), ("HR", 6), ("Total", 7)]
+        for m, idx in metrics:
+            resp += f"| {m} | {' | '.join(str(r[idx]) for r in rows)} |\n"
+        result["response"] = resp
+        return result
+
     if intent == "COMPARE":
         names, data = params.get("names", []), []
         for name in names:
